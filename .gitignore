@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual Environments
+venv/
+env/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Models
+*.h5
+*.keras
+
+# Dataset
+Dataset/
+data/
+
+# Logs & Cache
+*.log
+.cache/
+.pytest_cache/
+
+# Environment Variables
+.env
+
+# System Files
+.DS_Store
+Thumbs.db
