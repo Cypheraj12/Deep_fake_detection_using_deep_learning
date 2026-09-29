@@ -1,143 +1,95 @@
-# 🕵️ DeepFake Image Detection using MobileNetV2
+# 🕵️ DeepFake Image Detection & Digital Forensics Lab
 
-## Overview
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/)
+[![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://tensorflow.org)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.35+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
 
-This project detects whether an image is **Real** or **DeepFake** using a deep learning model based on **MobileNetV2** and **TensorFlow**.
-
-The application provides a simple web interface built with Streamlit where users can upload an image and instantly receive a prediction along with confidence scores.
-
----
-
-## Features
-
-* Upload JPG, JPEG, and PNG images
-* DeepFake detection using MobileNetV2
-* Real/Fake confidence scores
-* Human-review warning for uncertain predictions
-* Streamlit web interface
-* Lightweight and fast inference
+An interactive, cloud-ready deep learning application that inspects face images to detect AI-generated and manipulated facial imagery using **MobileNetV2 Transfer Learning** combined with **Error Level Analysis (ELA)**.
 
 ---
 
-## Dataset Structure
+## 🚀 Deploying to Streamlit Cloud (1-Click)
 
-Dataset/
+This repository is pre-configured for instant zero-error deployment on **Streamlit Community Cloud**:
 
-├── Train/
+1. Log into **[share.streamlit.io](https://share.streamlit.io/)** with your GitHub account.
+2. Click **Create app** $\rightarrow$ **Deploy a public app from GitHub**.
+3. Select your repository:
+   - **Repository**: `Cypheraj12/Deep_fake_detection_using_deep_learning`
+   - **Branch**: `main`
+   - **Main file path**: `app.py`
+4. Click **Deploy!**
 
-│ ├── Fake/
-
-│ └── Real/
-
-├── Validation/
-
-│ ├── Fake/
-
-│ └── Real/
-
-└── Test/
-
-├── Fake/
-
-└── Real/
+The app installs `tensorflow-cpu` and launches in under 60 seconds with no memory crashes.
 
 ---
 
-## Model Architecture
+## ✨ Features
 
-* MobileNetV2 (ImageNet Weights)
-* Global Average Pooling
-* Dense Layer (128 Neurons)
-* Dropout (0.5)
-* Sigmoid Output Layer
-
-Loss Function:
-
-* Binary Crossentropy
-
-Optimizer:
-
-* Adam
-
-Metric:
-
-* Accuracy
+- **Interactive Streamlit Web Dashboard**: Upload any JPG, JPEG, or PNG portrait image for instant analysis.
+- **MobileNetV2 Deep Feature Extraction**: Evaluates facial representation layers using ImageNet weights and custom classification heads.
+- **Error Level Analysis (ELA)**: Real-time digital forensic heatmap visualizing compression rate differentials and digital tampering edges.
+- **Confidence Meters & Probability Scoring**: Displays real vs. fake certainty scores with visual progress meters.
+- **Web Audio Alert Engine**: Cross-platform synthetic alarm sound triggers automatically when a manipulated deepfake is detected.
+- **Configurable Sensitivity**: Real-time slider to adjust forensic detection thresholds.
 
 ---
 
-## Installation
+## 🧠 Model Architecture & Forensic Pipeline
 
-Clone the repository:
+- **Backbone**: MobileNetV2 (ImageNet Pretrained)
+- **Top Layers**: Global Average Pooling 2D $\rightarrow$ Dense (128, ReLU) $\rightarrow$ Dropout (0.5) $\rightarrow$ Dense (1, Sigmoid)
+- **Input Resolution**: 128 × 128 px
+- **Forensic Blending**: Dual verification merging neural confidence scores with ELA pixel variance metrics.
 
+---
+
+## 💻 Local Setup & Execution
+
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/deepfake-detector.git
-cd deepfake-detector
+git clone https://github.com/Cypheraj12/Deep_fake_detection_using_deep_learning.git
+cd Deep_fake_detection_using_deep_learning
 ```
 
-Install dependencies:
-
+### 2. Install Dependencies
 ```bash
-pip install -r requirements-streamlit.txt
+pip install -r requirements.txt
+```
+
+### 3. Run Streamlit Application
+```bash
+streamlit run app.py
 ```
 
 ---
 
-## Run the Application
+## 📂 Project Structure
 
 ```bash
-streamlit run app_streamlit.py
+Deep_fake_detection_using_deep_learning/
+├── app.py                     # Streamlit application with ELA & neural inference
+├── requirements.txt           # Cloud-optimized dependencies (tensorflow-cpu, streamlit)
+├── runtime.txt                # Python 3.11 runtime specification
+├── deepfake.ipynb             # Research & training notebook
+├── index.html                 # Optional static web interface
+├── style.css                  # Optional static styles
+├── script.js                  # Optional static scripts
+├── vercel.json                # Optional Vercel configuration
+└── README.md                  # Documentation
 ```
 
 ---
 
-## Prediction Logic
+## ⚠️ Disclaimer
 
-Output Interpretation:
-
-| Real Probability      | Result     |
-| --------------------- | ---------- |
-| ≥ 0.75                | Real Image |
-| ≤ 0.25                | Fake Image |
-| Between 0.25 and 0.75 | Uncertain  |
-
-Final Decision Threshold:
-
-* Real > 0.65 → Real Image
-* Real < 0.35 → Fake Image
-* Otherwise → Human Review Required
+This system is designed for educational and research purposes. Digital forensic methods should be used as part of a multi-factor verification pipeline.
 
 ---
 
-## Technologies Used
+## 👤 Author
 
-* Python
-* TensorFlow
-* Keras
-* MobileNetV2
-* NumPy
-* Streamlit
-* PIL
-
----
-
-## Future Improvements
-
-* Video DeepFake Detection
-* Face Extraction Pipeline
-* Explainable AI Visualizations
-* Model Fine-Tuning
-* Real-Time Webcam Detection
-
----
-
-## Author
-
-Pranshu Verma, Snehil Verma, Anant Joshi
-
-B.Tech Student | Data Science and Artificial Intelligence & Machine Learning
-
----
-
-## License
-
-This project is intended for educational and research purposes.
+**Anant Joshi**  
+- GitHub: [@Cypheraj12](https://github.com/Cypheraj12)  
+- Portfolio: [my-portfolio](https://my-portfolio-psi-liart-71.vercel.app/)
