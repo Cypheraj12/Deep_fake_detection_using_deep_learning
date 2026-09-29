@@ -1,27 +1,18 @@
 # 🕵️ DeepFake Image Detection & Digital Forensics Lab
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://deepfakedetectionusingdeeplearning-gyrnacaq2wanhxbpxvuc6r.streamlit.app/)
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://tensorflow.org)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.35+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Live%20App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://deepfakedetectionusingdeeplearning-gyrnacaq2wanhxbpxvuc6r.streamlit.app/)
 
 An interactive, cloud-ready deep learning application that inspects face images to detect AI-generated and manipulated facial imagery using **MobileNetV2 Transfer Learning** combined with **Error Level Analysis (ELA)**.
 
 ---
 
-## 🚀 Deploying to Streamlit Cloud (1-Click)
+## 🚀 Live Demo
 
-This repository is pre-configured for instant zero-error deployment on **Streamlit Community Cloud**:
-
-1. Log into **[share.streamlit.io](https://share.streamlit.io/)** with your GitHub account.
-2. Click **Create app** $\rightarrow$ **Deploy a public app from GitHub**.
-3. Select your repository:
-   - **Repository**: `Cypheraj12/Deep_fake_detection_using_deep_learning`
-   - **Branch**: `main`
-   - **Main file path**: `app.py`
-4. Click **Deploy!**
-
-The app installs `tensorflow-cpu` and launches in under 60 seconds with no memory crashes.
+Experience the live interactive application hosted on Streamlit Cloud:  
+👉 **[DeepFake Detection & Digital Forensics Lab · Streamlit](https://deepfakedetectionusingdeeplearning-gyrnacaq2wanhxbpxvuc6r.streamlit.app/)**
 
 ---
 
