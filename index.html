@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deepfake Image Detection System | Anant Joshi</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <span class="logo-icon">🧠</span>
+        <span class="logo-text">Deepfake <strong>Detector AI</strong></span>
+      </div>
+      <div class="nav-links">
+        <span class="model-badge">Model: MobileNetV2</span>
+        <a href="https://github.com/Cypheraj12/Deep_fake_detection_using_deep_learning" target="_blank" rel="noreferrer" class="btn-github">GitHub Repository</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="hero-section">
+      <div class="badge">Computer Vision • Deep Learning Classification • Forensic ELA Analysis</div>
+      <h1 class="hero-title">Real-Time Deepfake <span>Detection System</span></h1>
+      <p class="hero-subtitle">Upload any portrait or media image to detect synthetic manipulation, face-swapping, and GAN-generated artifacts. Evaluates frequency domain textures, compression boundaries, and structural irregularities.</p>
+    </section>
+
+    <!-- Main Workspace -->
+    <div class="workspace-grid">
+      <!-- Left: Upload & Settings Panel -->
+      <div class="panel-card upload-panel">
+        <div class="panel-header">
+          <h2>📤 Image Input & Model Settings</h2>
+        </div>
+
+        <div class="settings-row">
+          <div class="setting-item">
+            <label for="modelSelect">Classification Architecture:</label>
+            <select id="modelSelect">
+              <option value="mobilenetv2" selected>MobileNetV2 (Best Accuracy)</option>
+              <option value="custom_cnn">Custom 6-Layer CNN (Fast)</option>
+            </select>
+          </div>
+
+          <div class="setting-item">
+            <label for="audioToggle">Fake Alert Alarm:</label>
+            <div class="toggle-wrapper">
+              <input type="checkbox" id="audioToggle" checked>
+              <label for="audioToggle" class="toggle-slider"></label>
+              <span id="audioStatusText" class="audio-text">Audio Active 🔊</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drag & Drop Zone -->
+        <div class="drop-zone" id="dropZone">
+          <div class="drop-content" id="dropContent">
+            <div class="upload-icon">📁</div>
+            <h3>Drag & drop portrait image here</h3>
+            <p>or click to browse files (JPEG, PNG, WebP supported)</p>
+            <button type="button" class="btn-browse" id="btnBrowse">Browse Device</button>
+          </div>
+          <input type="file" id="fileInput" accept="image/png, image/jpeg, image/jpg, image/webp" hidden>
+        </div>
+
+        <!-- Sample Images -->
+        <div class="samples-wrapper">
+          <span class="samples-title">Or test with quick sample images:</span>
+          <div class="sample-chips">
+            <button class="sample-btn" data-type="real" data-src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&q=80">Sample 1: Real Portrait</button>
+            <button class="sample-btn" data-type="real" data-src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80">Sample 2: Real Studio</button>
+            <button class="sample-btn" data-type="fake" data-src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&q=80">Sample 3: AI Synthetic</button>
+            <button class="sample-btn" data-type="fake" data-src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500&q=80">Sample 4: Deepfake Artifacts</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Inspection & Results Panel -->
+      <div class="panel-card results-panel">
+        <div class="panel-header">
+          <h2>🔍 Forensic Inspection & Probabilities</h2>
+        </div>
+
+        <!-- Image Previews -->
+        <div class="preview-grid" id="previewGrid">
+          <div class="preview-box">
+            <span class="preview-label">Original Image</span>
+            <div class="img-wrapper">
+              <img id="sourceImage" src="" alt="Source preview" style="display: none;">
+              <div class="empty-state" id="emptyOriginal">No image loaded</div>
+            </div>
+          </div>
+          <div class="preview-box">
+            <span class="preview-label">Forensic Saliency / ELA Heatmap</span>
+            <div class="img-wrapper">
+              <canvas id="heatmapCanvas" style="display: none;"></canvas>
+              <div class="empty-state" id="emptyHeatmap">Awaiting inspection</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <button id="btnRunDetection" class="btn-run" disabled>
+          <span>Run Detection 🚀</span>
+        </button>
+
+        <!-- Prediction Result Box -->
+        <div class="result-box" id="resultBox" style="display: none;">
+          <div class="result-header">
+            <span class="verdict-tag" id="verdictTag">VERDICT</span>
+            <span class="confidence-val" id="confidenceVal">98.4% Confidence</span>
+          </div>
+
+          <div class="verdict-banner" id="verdictBanner">
+            <h3 id="verdictTitle">Analyzing...</h3>
+            <p id="verdictDesc">Evaluated facial texture, edge blending, and compression anomalies.</p>
+          </div>
+
+          <!-- Probability Meters -->
+          <div class="probability-meters">
+            <div class="meter-group">
+              <div class="meter-info">
+                <span>Real Likelihood</span>
+                <span id="realProbText">50%</span>
+              </div>
+              <div class="meter-bar">
+                <div class="meter-fill real-fill" id="realFill" style="width: 50%;"></div>
+              </div>
+            </div>
+
+            <div class="meter-group">
+              <div class="meter-info">
+                <span>Fake / Synthetic Likelihood</span>
+                <span id="fakeProbText">50%</span>
+              </div>
+              <div class="meter-bar">
+                <div class="meter-fill fake-fill" id="fakeFill" style="width: 50%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detailed Forensic Metrics -->
+          <div class="metrics-grid">
+            <div class="metric-item">
+              <span class="m-label">Texture Variance</span>
+              <span class="m-value" id="textureScore">Normal</span>
+            </div>
+            <div class="metric-item">
+              <span class="m-label">Edge Inconsistency</span>
+              <span class="m-value" id="edgeScore">Low</span>
+            </div>
+            <div class="metric-item">
+              <span class="m-label">Compression Noise</span>
+              <span class="m-value" id="noiseScore">Uniform</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>Developed by <strong>Anant Joshi</strong> • AI/ML Engineer & Data Analyst</p>
+      <div class="footer-links">
+        <a href="https://github.com/Cypheraj12" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://linkedin.com/in/anant-joshi-52a6ab2a7/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://my-portfolio-psi-liart-71.vercel.app/" target="_blank" rel="noreferrer">Portfolio</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
