@@ -1,0 +1,5 @@
+requirements*.txt
+app.py
+deepfake.ipynb
+*.h5
+*.png

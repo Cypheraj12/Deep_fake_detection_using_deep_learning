@@ -2,6 +2,8 @@
   "version": 2,
   "name": "deepfake-detection",
   "cleanUrls": true,
+  "buildCommand": null,
+  "outputDirectory": ".",
   "headers": [
     {
       "source": "/(.*)",
